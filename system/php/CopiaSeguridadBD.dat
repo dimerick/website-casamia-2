@@ -1,0 +1,187 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 04-04-2015 a las 01:52:05
+-- Versión del servidor: 5.1.36
+-- Versión de PHP: 5.3.0
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Base de datos: `casamia`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `areas`
+--
+
+CREATE TABLE IF NOT EXISTS `areas` (
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `area` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Volcar la base de datos para la tabla `areas`
+--
+
+INSERT INTO `areas` (`fecha`, `id`, `area`) VALUES
+('0000-00-00 00:00:00', 1, 'COMUNICACIONES'),
+('0000-00-00 00:00:00', 2, 'CULTURA'),
+('0000-00-00 00:00:00', 3, 'ADMINISTRATIVA'),
+('0000-00-00 00:00:00', 4, 'CONVIVENCIA'),
+('0000-00-00 00:00:00', 5, 'TALENTO HUMANO'),
+('0000-00-00 00:00:00', 6, 'GESTIÃ³N DE PROYECTOS');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cargos`
+--
+
+CREATE TABLE IF NOT EXISTS `cargos` (
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_cargo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `id_area` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `id_encargado` int(11) NOT NULL,
+  `funciones` varchar(500) CHARACTER SET ucs2 COLLATE ucs2_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Volcar la base de datos para la tabla `cargos`
+--
+
+INSERT INTO `cargos` (`fecha`, `id`, `nombre_cargo`, `id_area`, `id_encargado`, `funciones`) VALUES
+('2015-03-26 14:56:24', 1, 'Coordinador Area Comunicaciones', '1', 5, 'Crear y administrar el sistema de informaciÃ³n de la CorporaciÃ³n Casa Mia'),
+('2015-03-09 12:00:30', 2, 'Coordinador Area Gestion', '6', 6, 'Gestionar muchas cosas buenas para la corporaciÃ³n casa mia'),
+('2015-03-13 13:17:50', 3, 'Coordinador Ãrea Talento Humano', '5', 14, 'Coordinar el Ã¡rea de  talento humano de la Corporacion Casa Mia'),
+('2015-03-18 16:24:58', 4, 'CordinadoraTelecentro', '1', 15, 'Administrar el Telecentro Santander'),
+('2015-03-24 16:38:13', 5, 'Voluntaria', '1', 16, 'Funciones xxxxx');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cargos_retirados`
+--
+
+CREATE TABLE IF NOT EXISTS `cargos_retirados` (
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fecha_ingreso` time NOT NULL,
+  `id` int(11) NOT NULL,
+  `nombre_cargo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `id_area` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `id_encargado` int(11) NOT NULL,
+  `funciones` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `cargos_retirados`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `programas_formacion_general`
+--
+
+CREATE TABLE IF NOT EXISTS `programas_formacion_general` (
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `intesidad_horaria` int(11) NOT NULL,
+  `duracion` int(11) NOT NULL,
+  `descripcion` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `programas_formacion_general`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `genero` int(11) NOT NULL,
+  `fecha_nacimiento` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `acudiente` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_doc` int(11) NOT NULL,
+  `no_documento` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `celular` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `ciudad` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `barrio` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `estrato` int(11) NOT NULL,
+  `comuna` int(11) NOT NULL,
+  `grupo_poblacional` int(11) NOT NULL,
+  `fileName` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Volcar la base de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`fecha`, `id`, `nombres`, `apellidos`, `genero`, `fecha_nacimiento`, `acudiente`, `tipo_doc`, `no_documento`, `telefono`, `celular`, `email`, `ciudad`, `barrio`, `estrato`, `comuna`, `grupo_poblacional`, `fileName`) VALUES
+('2015-03-25 17:24:32', 2, 'Alexis   ', 'Saenz                        ', 1, '1986-04-06', '                        ', 1, '1017128019', '4627058', '3107007336', 'alexissaenz@gmail.com', 'Bello', 'Paris', 2, 1, 1, '2LostFile_JPG_40229023.jpg'),
+('2015-03-25 17:39:51', 4, 'Carolina  ', 'Hoyos Arango  ', 1, '1992-03-06', '  ', 1, '123456765', '2737997', '3214567562', 'caritohoyos@hotmail.com', 'Medellin', 'Santander', 3, 6, 3, '4Img.jpg'),
+('2015-03-09 11:17:12', 5, 'Erick     ', 'Saenz     ', 1, '1990-08-08', 'Ines Montoya     ', 1, '1017182924', '4627058', '3207112734', 'ericksaenz@outlook.com', 'Medellin', 'Paris', 2, 1, 1, '5Snapshot_20150210_4.JPG'),
+('0000-00-00 00:00:00', 6, 'Ximena', 'Quintero Saavedra', 2, '1986-12-31', '', 1, '67028981', '2737997', '', 'anemix21@gmail.com', 'Medellin', 'Santander', 3, 6, 1, ''),
+('0000-00-00 00:00:00', 8, 'Carlitos Andres', ' Valencia Arias', 1, '1996-01-17', '', 1, '1040751647', '4765538', '3145402407', 'c.andres.art@gmail.com', 'Medellin', 'Pedregal', 3, 6, 1, ''),
+('0000-00-00 00:00:00', 12, 'Yesica  ', 'Goez  ', 2, '1995-01-11', '  ', 1, '1039463630', '2737997', '3213750978', 'yaoartista2013@hotmail.com', 'Medellin ', 'Santander ', 2, 6, 3, ''),
+('2015-04-03 20:50:20', 13, 'Gata Mia ', 'Saenz Rojas            ', 2, '2011-01-01', 'Erick Saenz          ', 2, '133456778', '4627058', '3207112734', '', 'Bello ', 'Paris ', 1, 1, 1, '13LostFile_JPG_42532131.jpg'),
+('2015-03-13 13:16:28', 14, 'Giovany Alexander ', 'Ramirez Puerta ', 1, '1989-09-14', ' ', 1, '1128423463', '0000000', '3127936758', 'talentohumano@corpcasamia.org', 'Medellin ', 'Santander  ', 2, 6, 1, '14gio.jpg'),
+('2015-03-18 16:23:49', 15, 'Leidy Johana ', 'Goez Arango ', 2, '1992-03-01', ' ', 1, '1040742296', '0000000', '3015896085', 'goezjohana@gmail.com', 'Medellin ', '12 De Octubre ', 2, 6, 1, '15JOha.jpg'),
+('2015-03-24 16:35:54', 16, 'Mateo  ', 'Montoya Acosta ', 1, '1997-10-10', 'Adriana Acosta ', 1, '97101014260', '5822022', '', 'teomontoya7@gmail.com', 'Medellin ', 'Santander  ', 2, 6, 1, '16Mateo.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios_eliminados`
+--
+CREATE TABLE IF NOT EXISTS `usuarios_eliminados` (
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `genero` int(11) NOT NULL,
+  `fecha_nacimiento` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `acudiente` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_doc` int(11) NOT NULL,
+  `no_documento` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `celular` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `ciudad` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `barrio` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `estrato` int(11) NOT NULL,
+  `comuna` int(11) NOT NULL,
+  `grupo_poblacional` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcar la base de datos para la tabla `usuarios_eliminados`
+--
+
+INSERT INTO `usuarios_eliminados` (`fecha`, `id`, `nombres`, `apellidos`, `genero`, `fecha_nacimiento`, `acudiente`, `tipo_doc`, `no_documento`, `telefono`, `celular`, `email`, `ciudad`, `barrio`, `estrato`, `comuna`, `grupo_poblacional`) VALUES
+('0000-00-00 00:00:00', 3, 'Yeferson', 'Berrio Yepes', 1, '1998-02-03', 'Luz Marina Yepes Rivera', 1, '1034567876', '2736508', '3017518318', 'yeferson-63@hotmail.com', 'Medellin', 'Santander', 2, 6, 1),
+('0000-00-00 00:00:00', 7, 'Ismael', 'Lopez', 1, '2001-05-12', 'marisol ocampo', 2, '1023456768', '3456758', '3218972345', '', 'bello', 'paris', 2, 1, 2);
